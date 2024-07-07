@@ -1,0 +1,23 @@
+version: '3'
+services:
+
+  openeye_image_service:
+    container_name: openeye_image_service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://openeye_service_registry:8761/eureka/
+      - eureka.client.enabled=true
+      - eureka.host=openeye_service_registry
+      - eureka.instance.preferIpAddress=true
+    networks:
+      - springboot-net
+    restart: on-failure
+
+networks:
+  springboot-net:
+    driver: bridge
+    external: true
