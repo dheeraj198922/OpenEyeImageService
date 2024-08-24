@@ -9,7 +9,7 @@ services:
     ports:
       - "8083:8083"
     environment:
-      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://openeye_service_registry:8761/eureka/
+      - eureka.client.serviceUrl.defaultZone= http://openeye_service_registry:8761/eureka
       - eureka.client.enabled=true
       - eureka.host=openeye_service_registry
       - eureka.instance.preferIpAddress=true
